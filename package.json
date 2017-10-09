@@ -1,0 +1,25 @@
+{
+  "name": "pokemon-go-api",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "express": "^4.16.1",
+    "express-graphql": "^0.6.11",
+    "graphql": "^0.11.6",
+    "lokijs": "^1.5.0",
+    "sort-by": "^1.2.0"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.125.0",
+    "case": "^1.5.3",
+    "mkdirp": "^0.5.1",
+    "node-pogo-protos-vnext": "^2.14.2",
+    "standard": "^10.0.3"
+  },
+  "scripts": {
+    "clean": "rm -rf data/",
+    "mine": "node scripts/mine.js",
+    "prestart": "npm run mine",
+    "start": "node server/index.js"
+  }
+}
