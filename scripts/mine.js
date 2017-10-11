@@ -11,19 +11,33 @@ const output = path.resolve(__dirname, '../data/game-master.db')
 const data = mine(JSON.parse(fs.readFileSync(input, 'utf8')))
 const db = new Loki(output)
 
-db.addCollection('types', { unique: [ 'id' ] }).insert(data.types)
+const schemas = {
+  types: {
+    unique: [ 'id' ]
+  },
+  items: {
+    unique: [ 'id' ],
+    indices: [ 'type', 'category' ]
+  },
+  pokemon: {
+    unique: [ 'id' ],
+    indices: [ 'dex', 'generation' ],
+    clone: true
+  },
+  moves: {
+    unique: [ 'id' ],
+    clone: true
+  }
+}
 
-db.addCollection('pokemon', {
-  unique: [ 'id' ],
-  indices: [ 'dex', 'generation' ],
-  clone: true
-}).insert(data.pokemon)
+for (const [ id, schema ] of Object.entries(schemas)) {
+  if (!(id in data)) continue
+  db.addCollection(id, schema).insert(data[id])
+}
 
-db.addCollection('moves', { unique: [ 'id' ] })
-
-mkdir(path.dirname(output), function (err) {
+mkdir(path.dirname(output), err => {
   if (err) throw err
-  db.saveDatabase(function (err) {
+  db.saveDatabase(err => {
     if (err) throw err
   })
 })
