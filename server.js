@@ -2,8 +2,8 @@
 const express = require('express')
 const favicon = require('serve-favicon')
 const graphql = require('express-graphql')
+const logger = require('./lib/logger')
 const Loki = require('lokijs')
-const morgan = require('morgan')
 const path = require('path')
 
 const schema = require('./lib/schema')
@@ -13,7 +13,7 @@ const app = express()
 const db = new Loki(path.resolve(__dirname, './data/game-master.db'))
 
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
-app.use(morgan('tiny'))
+app.use(logger)
 
 db.loadDatabase(null, err => {
   if (err) throw err
