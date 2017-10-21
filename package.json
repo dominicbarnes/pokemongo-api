@@ -21,6 +21,7 @@
     "mine": "node scripts/mine.js",
     "prestart": "npm run mine",
     "start": "node server.js",
-    "update": "git submodule update --recursive --remote"
+    "update": "git submodule update --recursive --remote",
+    "deploy": "up"
   }
 }
