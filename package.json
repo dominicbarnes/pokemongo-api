@@ -20,6 +20,7 @@
     "clean": "rm -rf data/",
     "mine": "node scripts/mine.js",
     "prestart": "npm run mine",
-    "start": "node server.js"
+    "start": "node server.js",
+    "update": "git submodule update --recursive --remote"
   }
 }
