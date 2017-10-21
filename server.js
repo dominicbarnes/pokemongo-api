@@ -4,6 +4,7 @@ const graphql = require('express-graphql')
 const Loki = require('lokijs')
 const path = require('path')
 const schema = require('./lib/schema')
+const port = process.env.PORT || 4000
 
 const app = express()
 const db = new Loki(path.resolve(__dirname, './data/game-master.db'))
@@ -16,7 +17,5 @@ db.loadDatabase(null, err => {
     graphiql: true
   }))
 
-  app.listen(4000, () => {
-    console.log('Running a GraphQL API server at http://localhost:4000/graphql')
-  })
+  app.listen(port)
 })
