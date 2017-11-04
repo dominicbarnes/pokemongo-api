@@ -24,7 +24,11 @@
     "prestart": "npm run mine",
     "start": "node server.js",
     "update": "git submodule update --recursive --remote",
-    "deploy": "up",
-    "open": "up url --open"
+    "deploy": "up deploy",
+    "deploy:staging": "up deploy staging",
+    "deploy:production": "up deploy production",
+    "open": "up url --open",
+    "open:staging": "up url --open staging",
+    "open:production": "up url --open production" 
   }
 }
