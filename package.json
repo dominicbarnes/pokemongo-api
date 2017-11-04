@@ -21,7 +21,6 @@
   "scripts": {
     "clean": "rm -rf data/",
     "mine": "node scripts/mine.js",
-    "prestart": "npm run mine",
     "start": "node server.js",
     "update": "git submodule update --recursive --remote",
     "deploy": "up deploy",
@@ -29,6 +28,6 @@
     "deploy:production": "up deploy production",
     "open": "up url --open",
     "open:staging": "up url --open staging",
-    "open:production": "up url --open production" 
+    "open:production": "up url --open production"
   }
 }
