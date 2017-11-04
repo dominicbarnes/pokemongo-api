@@ -14,7 +14,7 @@ const app = express()
 const db = new Loki(path.resolve(__dirname, './data/game-master.db'))
 
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
-app.use(logger)
+app.use(logger.middleware)
 
 db.loadDatabase(null, err => {
   if (err) throw err
@@ -24,5 +24,7 @@ db.loadDatabase(null, err => {
     graphiql: stage === 'development'
   }))
 
-  app.listen(port)
+  app.listen(port, () => {
+    logger.log('info', 'server listening', { port })
+  })
 })
