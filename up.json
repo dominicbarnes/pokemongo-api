@@ -1,3 +1,6 @@
 {
-  "profile": "personal"
+  "profile": "personal",
+  "hooks": {
+    "build": "npm run mine"
+  }
 }
