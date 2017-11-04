@@ -30,3 +30,4 @@ see what is being requested first. Feel free to submit your own ideas as well!
 [dev]: https://61heu9qv1g.execute-api.us-west-2.amazonaws.com/development/
 [stage]: https://61heu9qv1g.execute-api.us-west-2.amazonaws.com/staging/
 [prod]: https://61heu9qv1g.execute-api.us-west-2.amazonaws.com/production/
+[issues]: https://github.com/dominicbarnes/pokemongo-api/issues
