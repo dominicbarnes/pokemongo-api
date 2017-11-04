@@ -8,6 +8,7 @@ const path = require('path')
 
 const schema = require('./lib/schema')
 
+const stage = process.env.UP_STAGE || 'development'
 const port = process.env.PORT || 4000
 const app = express()
 const db = new Loki(path.resolve(__dirname, './data/game-master.db'))
@@ -20,7 +21,7 @@ db.loadDatabase(null, err => {
 
   app.use('/graphql', graphql({
     schema: schema(db),
-    graphiql: true
+    graphiql: stage === 'development'
   }))
 
   app.listen(port)
