@@ -1,6 +1,9 @@
 {
   "profile": "personal",
   "hooks": {
-    "build": "npm run mine"
+    "build": [
+      "npm run mine",
+      "npm prune --production"
+    ]
   }
 }
