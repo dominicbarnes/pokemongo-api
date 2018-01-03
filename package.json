@@ -3,10 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
+    "@lokijs/fs-storage": "^2.0.0-beta.5",
+    "@lokijs/loki": "^2.0.0-beta.5",
     "express": "^4.16.1",
     "express-graphql": "^0.6.11",
     "graphql": "^0.11.6",
-    "lokijs": "^1.5.0",
     "on-finished": "^2.3.0",
     "pretty-bytes": "^4.0.2",
     "pretty-hrtime": "^1.0.3",
@@ -16,6 +17,7 @@
     "case": "^1.5.3",
     "mkdirp": "^0.5.1",
     "node-pogo-protos-vnext": "^2.14.2",
+    "semver": "^5.4.1",
     "standard": "^10.0.3"
   },
   "scripts": {

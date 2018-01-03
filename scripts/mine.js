@@ -1,15 +1,17 @@
 
 const fs = require('fs')
-const Loki = require('lokijs')
-const mine = require('../lib/mine')
-const mkdir = require('mkdirp')
 const path = require('path')
+const util = require('util')
 
-const input = path.resolve(__dirname, '../game-master/versions/latest/GAME_MASTER.json')
+const mkdir = require('mkdirp')
+const semver = require('semver')
+const { Loki } = require('@lokijs/loki')
+const { FSStorage } = require('@lokijs/fs-storage')
+
+const Miner = require('../lib/mine')
+
+const input = path.resolve(__dirname, '../game-master/versions/')
 const output = path.resolve(__dirname, '../data/game-master.db')
-
-const data = mine(JSON.parse(fs.readFileSync(input, 'utf8')))
-const db = new Loki(output)
 
 const schemas = {
   types: {
@@ -30,15 +32,38 @@ const schemas = {
   }
 }
 
-for (const [ id, schema ] of Object.entries(schemas)) {
-  if (!(id in data)) continue
-  const rows = Array.from(data[id].values())
-  db.addCollection(id, schema).insert(rows)
+async function run () {
+  const miner = new Miner()
+  const db = new Loki(output)
+  await db.initializePersistence({ adapter: new FSStorage() })
+
+  const files = await util.promisify(fs.readdir)(input)
+  const versions = files.filter(semver.valid).sort(semver.compare).reverse()
+
+  for (const version of versions) {
+    const file = path.join(input, version, 'GAME_MASTER.json')
+    const raw = await util.promisify(fs.readFile)(file, 'utf8')
+    const data = JSON.parse(raw)
+    miner.process(data)
+    break
+  }
+
+  for (const [ id, schema ] of Object.entries(schemas)) {
+    if (!(id in miner)) continue
+    const rows = Array.from(miner[id].values())
+    db.addCollection(id, schema).insert(rows)
+  }
+
+  await mkdir(path.dirname(output))
+  await db.saveDatabase()
 }
 
-mkdir(path.dirname(output), err => {
-  if (err) throw err
-  db.saveDatabase(err => {
-    if (err) throw err
+run()
+  .then(function () {
+    console.log('done')
+    process.exit(0)
   })
-})
+  .catch(function (err) {
+    console.error(err.stack)
+    process.exit(1)
+  })
