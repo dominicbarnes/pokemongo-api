@@ -32,7 +32,8 @@ const schemas = {
 
 for (const [ id, schema ] of Object.entries(schemas)) {
   if (!(id in data)) continue
-  db.addCollection(id, schema).insert(data[id])
+  const rows = Array.from(data[id].values())
+  db.addCollection(id, schema).insert(rows)
 }
 
 mkdir(path.dirname(output), err => {
