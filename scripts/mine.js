@@ -38,14 +38,14 @@ async function run () {
   await db.initializePersistence({ adapter: new FSStorage() })
 
   const files = await util.promisify(fs.readdir)(input)
-  const versions = files.filter(semver.valid).sort(semver.compare).reverse()
+  const versions = files.filter(semver.valid).sort(semver.compare)
 
   for (const version of versions) {
+    console.log('> version %s', version)
     const file = path.join(input, version, 'GAME_MASTER.json')
     const raw = await util.promisify(fs.readFile)(file, 'utf8')
     const data = JSON.parse(raw)
     miner.process(data)
-    break
   }
 
   for (const [ id, schema ] of Object.entries(schemas)) {
