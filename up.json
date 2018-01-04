@@ -1,9 +1,16 @@
 {
+  "name": "pokemongo-api",
   "profile": "personal",
   "hooks": {
+    "prebuild": [
+      "npm install --only dev"
+    ],
     "build": [
       "npm run mine",
       "npm prune --production"
     ]
+  },
+  "proxy": {
+    "command": "node server.js"
   }
 }

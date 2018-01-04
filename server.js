@@ -17,20 +17,19 @@ const app = express()
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 app.use(logger.middleware)
 
-async function run () {
-  const db = new Loki(path.resolve(__dirname, './data/game-master.db'))
-  await db.initializePersistence({ adapter: new FSStorage() })
-  await db.loadDatabase()
+const db = new Loki(path.resolve(__dirname, './data/game-master.db'))
 
-  app.use('/graphql', graphql({
-    schema: schema(db),
-    graphiql: stage === 'development'
-  }))
+db.initializePersistence({ adapter: new FSStorage() })
+  .then(() => db.loadDatabase())
+  .then(() => {
+    app.use('/graphql', graphql({
+      schema: schema(db),
+      graphiql: stage === 'development'
+    }))
 
-  app.listen(port, () => logger.log('info', 'server listening', { port }))
-}
-
-run().catch(function (err) {
-  console.error(err.stack)
-  process.exit(1)
-})
+    app.listen(port, () => logger.log('info', 'server started', { port }))
+  })
+  .catch(err => {
+    console.error(err.stack)
+    process.exit(1)
+  })
