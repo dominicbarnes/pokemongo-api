@@ -26,10 +26,10 @@
     "start": "up start --address :4000",
     "update": "git submodule update --recursive --remote",
     "deploy": "up deploy",
-    "deploy:staging": "up deploy staging",
-    "deploy:production": "up deploy production",
+    "deploy:stage": "up deploy staging",
+    "deploy:prod": "up deploy production",
     "open": "up url --open",
-    "open:staging": "up url --open staging",
-    "open:production": "up url --open production"
+    "open:stage": "up url --open staging",
+    "open:prod": "up url --open production"
   }
 }
