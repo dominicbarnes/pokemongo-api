@@ -12,11 +12,11 @@ tested on "development" before moving on to "staging" and then finally
 "production":
 
  - [development][dev]
- - ~~[staging][stage]~~ *(not yet available)*
- - ~~[production][prod]~~ *(not yet available)*
+ - [staging][stage]
+ - [production][prod]
 
-**NOTE:** only "development" will have [GraphIQL][graphiql], as it is a
-development tool and staging/production should be queried directly.
+**NOTE:** only "development" and "staging" will have [GraphIQL][graphiql], as it
+is a development tool and staging/production should be queried directly.
 
 ## Contributions
 

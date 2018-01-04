@@ -24,7 +24,7 @@ db.initializePersistence({ adapter: new FSStorage() })
   .then(() => {
     app.use('/graphql', graphql({
       schema: schema(db),
-      graphiql: stage === 'development'
+      graphiql: stage !== 'production'
     }))
 
     app.listen(port, () => logger.log('info', 'server started', { port }))
