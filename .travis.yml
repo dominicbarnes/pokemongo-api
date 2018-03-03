@@ -1,0 +1,27 @@
+language: node_js
+node_js:
+- node
+cache:
+  directories:
+  - node_modules
+before_deploy:
+- sudo chown -R $(whoami) /usr/local/bin/
+- curl -sf https://up.apex.sh/install | sh
+- up upgrade > /dev/null
+deploy:
+- provider: script
+  script: up deploy staging
+  skip_cleanup: true
+  on:
+    branch: master
+    tags: false
+- provider: script
+  script: up deploy production
+  skip_cleanup: true
+  on:
+    branch: master
+    tags: true
+env:
+  global:
+  - AWS_REGION: us-west-2
+  - secure: URsSOL7D8rZim5Du4EjV/iIRG3JNCLKIaJpzTG7zUKrS/wZlVjEDob9eQFMbzpOY+qIocUVm1zoBiQE74sxoaAaWb1TgrimO3XsPPP/Rdlmieh9L/Dz5Hz8lfMBKb9uZXzWsWewBPC9fskHC67JqRBtowbLl+6p08EuFK/jS5dRFwbR0wXkc4n/zNyGt/yKnNSsnHytFdCcMdYhaPGn03/dRwRMVCXjcZNxIjlNvT++yBFJEmaYqo5v2vOA6bhzfsGX5yu/WTnAPY/KMaF0NYVwTEBG378kYV5bRhCD1KBG2p626WvV6gLAPL9oWTbKHSv6lEqGFKn8Y7Cprl912UGMonGljkXDsys+0xJFMQiLlkbCBu50PlFGJeFc2NtxHbWhjs7xiry8ueFsfjaHIMXDGV+QCKibIq81KCi4KT/FGRjGn0dQoK8OmBXAbGLxc/nyK8OErf2BByAh9LZssrGeCfMsid3UEULog9e8Nhb8pr1Z+ndZe+PSNFl8K8mPlRnHaoN9eAnKyScRFQv4jtolkT83jDKaiY4LygJUFutRQIvlWuUReP4bpAjoQxCOEpjF16CoQ9Ofaj9zOFtKF9kVpEHCuRgyykXms6yoNOpRcjv0sVhvyxNH61n7MAZIqQA5dRyhcYjaYmT/QkVeirxiQTeijLAM8hC55mPE0Opc=

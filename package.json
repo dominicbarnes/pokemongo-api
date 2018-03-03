@@ -24,12 +24,6 @@
     "clean": "rm -rf data/",
     "mine": "node scripts/mine.js",
     "start": "up start --address :4000",
-    "update": "git submodule update --recursive --remote",
-    "deploy": "up deploy",
-    "deploy:stage": "up deploy staging",
-    "deploy:prod": "up deploy production",
-    "open": "up url --open",
-    "open:stage": "up url --open staging",
-    "open:prod": "up url --open production"
+    "update": "git submodule update --recursive --remote"
   }
 }
