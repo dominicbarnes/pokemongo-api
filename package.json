@@ -25,7 +25,9 @@
     "mine": "node scripts/mine.js",
     "start": "up start --address :4000",
     "update": "git submodule update --recursive --remote",
-    "test": "standard"
+    "test": "standard",
+    "version": "git-changelog --tag $npm_package_version && git add HISTORY.md",
+    "postversion": "git push --tags && git push"
   },
   "standard": {
     "ignore": [
