@@ -15,14 +15,17 @@ const output = path.resolve(__dirname, '../data/game-master.db')
 
 const schemas = {
   families: {
-    unique: [ 'id' ]
+    unique: [ 'id' ],
+    clone: true
   },
   types: {
-    unique: [ 'id' ]
+    unique: [ 'id' ],
+    clone: true
   },
   items: {
     unique: [ 'id' ],
-    indices: [ 'type', 'category' ]
+    indices: [ 'type', 'category' ],
+    clone: true
   },
   pokemon: {
     unique: [ 'id' ],
