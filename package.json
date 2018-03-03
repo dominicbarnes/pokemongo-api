@@ -24,6 +24,12 @@
     "clean": "rm -rf data/",
     "mine": "node scripts/mine.js",
     "start": "up start --address :4000",
-    "update": "git submodule update --recursive --remote"
+    "update": "git submodule update --recursive --remote",
+    "test": "standard"
+  },
+  "standard": {
+    "ignore": [
+      "game-master/**"
+    ]
   }
 }
