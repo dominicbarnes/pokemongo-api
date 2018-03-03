@@ -14,6 +14,9 @@ const input = path.resolve(__dirname, '../game-master/versions/')
 const output = path.resolve(__dirname, '../data/game-master.db')
 
 const schemas = {
+  families: {
+    unique: [ 'id' ]
+  },
   types: {
     unique: [ 'id' ]
   },
