@@ -1,4 +1,11 @@
 
+0.2.0 / 2018-04-18
+==================
+
+  * feat: add cp multipliers
+  * fix(travis): install up from github release to avoid rate-limits
+  * chore: update deps
+
 0.1.1 / 2018-04-01
 ==================
 
