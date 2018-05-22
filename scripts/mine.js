@@ -10,7 +10,7 @@ const { FSStorage } = require('@lokijs/fs-storage')
 
 const Miner = require('../lib/mine')
 
-const input = path.resolve(__dirname, '../game-master/versions/')
+const input = path.resolve(__dirname, '../pokemongo-game-master/versions/')
 const output = path.resolve(__dirname, '../data/game-master.db')
 
 const schemas = {

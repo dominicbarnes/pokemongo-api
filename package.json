@@ -31,7 +31,7 @@
   },
   "standard": {
     "ignore": [
-      "game-master/**"
+      "pokemongo-game-master/**"
     ]
   }
 }
