@@ -14,9 +14,9 @@
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
-    "case": "^1.5.3",
+    "case": "^1.5.5",
     "mkdirp": "^0.5.1",
-    "node-pogo-protos-vnext": "^2.21.0",
+    "node-pogo-protos-vnext": "^2.24.0",
     "semver": "^5.4.1",
     "standard": "^11.0.1"
   },
