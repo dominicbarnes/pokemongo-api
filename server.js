@@ -35,7 +35,7 @@ db.initializePersistence({ adapter: new FSStorage() })
     process.exit(1)
   })
 
-function formatError(err) {
+function formatError (err) {
   return {
     code: err.code,
     message: err.message,
