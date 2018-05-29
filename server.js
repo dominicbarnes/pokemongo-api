@@ -25,9 +25,7 @@ db.initializePersistence({ adapter: new FSStorage() })
     app.use('/graphql', graphql({
       schema: schema(db),
       graphiql: stage !== 'production',
-      formatError(err) {
-        return err.stack
-      }
+      formatError: stage !== 'production' ? formatError : null
     }))
 
     app.listen(port, () => logger.log('info', 'server started', { port }))
@@ -36,3 +34,11 @@ db.initializePersistence({ adapter: new FSStorage() })
     console.error(err.stack)
     process.exit(1)
   })
+
+function formatError(err) {
+  return {
+    code: err.code,
+    message: err.message,
+    stack: err.stack
+  }
+}
