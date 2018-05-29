@@ -1,4 +1,15 @@
 
+0.3.0 / 2018-05-29
+==================
+
+  * feat(pokemon): normalize form name
+  * fix: lint issues
+  * fix(build): use https for submodule
+  * feat(server): format errors with more information when not production
+  * feat(pokemon): initial implementation for alternate forms
+  * chore(pkg): update deps
+  * dev: replace game-master submodule with pokemongo-game-master
+
 0.2.0 / 2018-04-18
 ==================
 
