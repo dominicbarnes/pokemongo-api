@@ -23,7 +23,7 @@
   "scripts": {
     "clean": "rm -rf data/",
     "mine": "node scripts/mine.js",
-    "start": "up start --address :4000",
+    "start": "node server.js",
     "update": "git submodule update --recursive --remote",
     "test": "standard",
     "version": "git-changelog --tag $npm_package_version && git add HISTORY.md",

@@ -35,6 +35,10 @@ const schemas = {
   moves: {
     unique: [ 'id' ],
     clone: true
+  },
+  settings: {
+    unique: [ 'id' ],
+    clone: true
   }
 }
 
@@ -56,7 +60,11 @@ async function run () {
 
   for (const [ id, schema ] of Object.entries(schemas)) {
     if (!(id in miner)) continue
-    const rows = Array.from(miner[id].values())
+    const rows = Array.from(miner[id].entries()).map(entry => {
+      const [ id, doc ] = entry
+      doc.id = id
+      return doc
+    })
     db.addCollection(id, schema).insert(rows)
   }
 
