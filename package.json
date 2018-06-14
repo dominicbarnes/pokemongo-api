@@ -1,6 +1,6 @@
 {
   "name": "pokemon-go-api",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "private": true,
   "dependencies": {
     "@lokijs/fs-storage": "^2.0.0-beta.5",
