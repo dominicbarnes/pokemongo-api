@@ -1,4 +1,12 @@
 
+0.4.0 / 2018-06-14
+==================
+
+  * feat: add upgrade costs
+  * dev: add precommit hook to run tests
+  * fix: lint
+  * feat: calculate cp multipliers from game master
+
 0.3.3 / 2018-06-03
 ==================
 
