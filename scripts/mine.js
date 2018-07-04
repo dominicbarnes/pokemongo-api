@@ -60,7 +60,7 @@ async function run () {
 
   for (const [ id, schema ] of Object.entries(schemas)) {
     if (!(id in miner)) continue
-    const rows = Array.from(miner[id].entries()).map(entry => {
+    const rows = Array.from(miner[id].entries(), entry => {
       const [ id, doc ] = entry
       doc.id = id
       return doc
