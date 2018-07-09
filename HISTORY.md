@@ -1,4 +1,11 @@
 
+0.6.1 / 2018-07-09
+==================
+
+  * chore: update pokemongo-game-master
+  * refactor: use Array.from mapFn argument
+  * dev: switch back to original game-master
+
 0.6.0 / 2018-06-28
 ==================
 
